@@ -1,6 +1,6 @@
 package com.stack;
 /**
- * Stack Structure
+ *  Stack Structure (an implementation by array)
  *  Author : Zequn Song
  *  Email : zsong73@gwu.edu
  */
