@@ -1,5 +1,12 @@
 package com.queue;
 
+/**
+ * Priority Queue
+ * with insertion sort
+ * build by Integer array
+ * Author : Zequn Song
+ * Email : zsong73@gwu.edu
+ */
 public class PriorityQueue {
     private int maxSize;
     private int[] priQueArray;
