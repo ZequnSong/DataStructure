@@ -13,7 +13,7 @@ public class StackSingleLinkedList {
     }
 
     public void push(Object obj){
-        list.add(obj);
+        list.addHead(obj);
     }
 
     public Object pop(){
