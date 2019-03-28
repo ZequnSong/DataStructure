@@ -5,10 +5,10 @@ package com.linkedList;
 public class testSingleLinkedList {
     public static void main(String[] args){
         SingleLinkedList list = new SingleLinkedList();
-        list.add("A");
-        list.add("B");
-        list.add("C");
-        list.add("D");
+        list.addHead("A");
+        list.addHead("B");
+        list.addHead("C");
+        list.addHead("D");
         list.display();
 
         System.out.println("After delete the head:");
