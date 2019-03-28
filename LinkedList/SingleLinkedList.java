@@ -33,7 +33,7 @@ public class SingleLinkedList {
      * @param obj
      * @return
      */
-    public Object add(Object obj){
+    public Object addHead(Object obj){
         //create a new node which contains the data we want to add
         Node newHead = new Node(obj);
         //if list is empty, new node is the head node
