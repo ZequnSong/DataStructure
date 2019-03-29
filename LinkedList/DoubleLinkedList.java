@@ -1,5 +1,11 @@
 package com.linkedList;
-
+/**
+ *  Double LinkedList
+ *  each Node have one more pointer --- prev pointer
+ *  can do forward traversal and reverse traversal
+ *  Author : Zequn Song
+ *  Email : zsong73@gwu.edu
+ */
 public class DoubleLinkedList {
     private Node head;
     private Node tail;
