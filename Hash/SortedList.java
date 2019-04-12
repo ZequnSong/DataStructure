@@ -1,8 +1,10 @@
 package com.hash;
 
 /**
+ *  used for chain addressing hash table
  *  Sorted LinkedList
  *  increasing order
+ *   
  *  Author : Zequn Song
  *  Email : zsong73@gwu.edu
  */
