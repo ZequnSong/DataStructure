@@ -1,5 +1,7 @@
 package com.heap;
-
+/**
+ * data Node in Heap
+ */
 public class Node {
     private int iData;
     public Node(int key) {
