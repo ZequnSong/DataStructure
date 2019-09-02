@@ -1,8 +1,12 @@
 package com.tree;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Stack;
+
 /**
  * Binary Tree
- * Author : Zequn Song
+ * @author : Zequn Song
  * Email : zsong73@gwu.edu
  */
 public class BinaryTree implements Tree {
@@ -33,34 +37,32 @@ public class BinaryTree implements Tree {
      * @param data insert data
      * @return
      */
-    public boolean insert(int data) {
+    public void insert(int data) {
         Node newNode = new Node(data);
-        if(root == null){//current tree is a null tree
-            root = newNode;
-            return true;
-        }else{
-            Node current = root;
-            //need to save the information of parentNode
-            //because need the parentNode to connect the new node to the tree
-            Node parentNode = null;
-            while(current != null){
-                parentNode = current;
-                if(data < current.data){//if insert data is smaller than current data, then go into left subtree
-                    current = current.leftChild;
-                    if(current == null){//if leftChild is null, then current position is the position for new node
-                        parentNode.leftChild = newNode;
-                        return true;
-                    }
-                }else{//if insert data is bigger than or equal to current data, then go into right subtree
-                    current = current.rightChild;
-                    if(current == null){//if rightChild is null, then current position is the position for new node
-                        parentNode.rightChild = newNode;
-                        return true;
-                    }
-                }
-            }
+        Node current = root;
+        //need to save the information of parentNode
+        //because need the parentNode to connect the new node to the tree
+        Node parentNode = null;
+
+        //1. find the insert position, which is current
+        while(current != null){
+            parentNode = current;//store the parent of current, because current is going to move
+            if(data < current.data)//if insert data is smaller than current data, then go into left subtree
+                current = current.leftChild;
+            else//if insert data is bigger than or equal to current data, then go into right subtree
+                current = current.rightChild;
         }
-        return false;
+
+        //2. connect newNode to parentNode
+        if(parentNode != null){
+            if(data < parentNode.data)
+                parentNode.leftChild = newNode;
+            else
+                parentNode.rightChild = newNode;
+        }else {
+            //if parentNode is null, means tree was empty, let root = newNode
+            this.root = newNode;
+        }
     }
 
     /**
@@ -84,7 +86,27 @@ public class BinaryTree implements Tree {
 
     /**
      * pre-order iterate
-     * recursive version, simple but need one parameter
+     * non-recursive version, simple but need one parameter
+     */
+    public List<Integer> preOrderRecur(){
+        Stack<Node> stack = new Stack<>();
+        List<Integer> preorder = new ArrayList<>();
+        if(root == null) return preorder;
+        stack.push(root);
+        while(!stack.empty()){
+            Node node = stack.pop();
+            preorder.add(node.data);
+            if(node.rightChild != null)
+                stack.push(node.rightChild);
+            if(node.leftChild != null)
+                stack.push(node.leftChild);
+        }
+        return preorder;
+    }
+
+    /**
+     * preorder
+     * recursive version
      * @param current current node is root node
      */
     public void preOrder(Node current){
@@ -284,8 +306,11 @@ public class BinaryTree implements Tree {
         bt.insert(25);
         bt.insert(85);
         bt.insert(100);
-        System.out.print("infix-order iterate: ---");
+        System.out.println("infix-order iterate: ---");
         bt.infixOrder(bt.root);
+        List<Integer> list = bt.preOrderRecur();
+        System.out.println();
+        System.out.println(list);
         bt.delete(10);
         bt.delete(30);
         bt.delete(80);
